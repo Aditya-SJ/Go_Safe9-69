@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.use('/register', require('./register'));
 router.use('/login', require('./login'));
+router.use('/dashboard', require('./dashboard'));
 
 
 
