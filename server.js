@@ -5,6 +5,7 @@ const router = require('./routes/index');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
+const flash = require('connect-flash');
 require('./config/passport');
 
 
@@ -19,6 +20,14 @@ app.use(session({
     saveUninitialized: true
 }));
 
+//global variables
+app.use(flash());
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
 
 //passsport initialization
 app.use(passport.initialize());
