@@ -6,6 +6,7 @@ router.use('/register', require('./register'));
 router.use('/login', require('./login'));
 router.use('/dashboard', require('./dashboard'));
 router.use('/logout', require('./logout'));
+router.use('/addContact', require('./addContact'));
 
 
 

@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/templatemo-softy-pinko.css">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <title>GoSafe</title>
 </head>
 
@@ -66,6 +67,123 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Welcome Area Start ***** -->
+    <div class="welcome-area" id="welcome">
+
+        <!-- ***** Header Text Start ***** -->
+        <div class="header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
+                        <h1>We are here to help in <strong>WOMEN SAFETY</strong><br><strong></strong></h1>
+                        <div>
+                            <button class="main-button" onclick="danger()" style="background-color: red; font-size: larger; margin-bottom: 20px;">Danger</button>
+                        </div>
+
+                        <div>
+                            <button class="main-button" onclick="getSafestPath()" style="background-color:greenyellow; font-size: larger;">Get Safest Path</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Header Text End ***** -->
+    </div>
+    <!-- ***** Welcome Area End ***** -->
+
+
+    <!-- ***** Contact Us Start ***** -->
+    <section class="section colored" id="contact-us">
+        <div class="container">
+            <!-- ***** Section Title Start ***** -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="center-heading">
+                        <h2 class="section-title">Add Relatives and friends to message in case of threat</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- ***** Section Title End ***** -->
+
+            <div class="row">
+                <!-- ***** Contact Text Start ***** -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="contact-text">
+                        <p>Help Centre JIIT NOIDA,Uttar Pradesh Pin: 201301</p>
+                    </div>
+                </div>
+                <!-- ***** Contact Text End ***** -->
+
+                <!-- ***** Contact Form Start ***** -->
+                <div class="col-lg-8 col-md-6 col-sm-12">
+                    <div class="contact-form">
+                        <form id="contact" action="/addContact" method="GET">
+                            <div class="row">
+                                <div class="col-lg-12" style="display: none;">
+                                    <fieldset>
+                                        <input name="useremail" type="email" class="form-control" id="user-email" required=""></input>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input name="email" type="email" class="form-control" id="email" placeholder="E-Mail Address" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <input name="phone" type="tel" class="form-control" id="phone" placeholder="Phone Number" required=""></input>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-button">ADD</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- ***** Contact Form End ***** -->
+            </div>
+        </div>
+    </section>
+    <!-- ***** Contact Us End ***** -->
+
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <ul class="social">
+                        <li><a href="#"><i class="fab fa-facebook-f" style="color:blue" ></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter" style="color: blue;"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin" style="color: blue;"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube" style="color: red;"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram" style="color: rgb(195, 0, 255);"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="copyright">Copyright &copy; 2021 GoSafe Community</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.getElementById('user-email').value = "<%= user.email %>";
+        document.getElementById('name-button').innerHTML = "<%= user.name %>";
+    </script>
 
     <script>
         function logOut() {
