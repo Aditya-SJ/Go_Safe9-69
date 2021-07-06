@@ -8,6 +8,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 require('./config/passport');
 
+require('dotenv').config();
+
 
 //Mongo DB connect
 mongoose.connect('mongodb://127.0.0.1:27017/gosafe', { useNewUrlParser: true, useUnifiedTopology: true })
