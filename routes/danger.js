@@ -53,8 +53,32 @@ router.get('/', (req, res) => {
                     console.log(info);
                 })
             }
+
+
+            for (let i = 0; i < allPhoneNumbers.length; i++) {
+                // require('dotenv').load();
+                var twilio = require('twilio')
+                var client = new twilio(process.env.accountSid, process.env.authToken);
+
+                client.messages
+                    .create({
+                        from: 'whatsapp:+14155238886',
+                        body: `Please take immediate action in order to help ${userName} at latitude ${lat}, longitude ${lng}`,
+                        to: `whatsapp:+91${allPhoneNumbers[i]}`
+                    })
+                    .then(message => console.log(message.sid))
+                    .catch(error => console.log(error));
+            }
+
         })
+        .catch((error) => {
+            console.log(error);
+        });
+
+
+
 })
+
 
 
 
