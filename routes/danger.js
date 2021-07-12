@@ -75,7 +75,7 @@ router.get('/', (req, res) => {
             console.log(error);
         });
 
-
+    res.send("<h1>Alerts send to near by police station & your relatives<h1>");
 
 })
 

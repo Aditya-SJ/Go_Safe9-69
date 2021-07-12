@@ -36,9 +36,59 @@
                         title: "GoSafe Community"
                     });
 
-
                     // console.log(process.env.MAP_API_KEY, "...................");
-                    // console.log(source, destination, index, "helllllllllll mapejs page \n")
+
+                } else {
+                    const directionsService = new google.maps.DirectionsService();
+
+                    const map = new google.maps.Map(document.getElementById("map"));
+                    // console.log(source, destination, "helooooooooooooo amp.ejs")
+
+                    directionsService.route({
+                            origin: source,
+                            destination: destination,
+                            travelMode: "DRIVING",
+                            provideRouteAlternatives: true,
+                        },
+                        (response, status) => {
+                            if (status === "OK") {
+                                console.log(response);
+                                for (let i = 0; i < response.routes.length; i++) {
+                                    let directionsRenderer = new google.maps.DirectionsRenderer({
+                                        polylineOptions: {
+                                            strokeColor: "red",
+                                        }
+                                    });
+
+                                    directionsRenderer.setMap(map);
+                                    directionsRenderer.setRouteIndex(i);
+                                    directionsRenderer.setDirections(response);
+                                }
+
+                                for (let i = 0; i < response.routes.length; i++) {
+                                    if (i == index) {
+                                        // console.log(response.routes[0].legs[0].distance.text, "helllo distance on map.ejs");
+                                        document.getElementById('msg').innerHTML = `Safest route from ${source} to ${destination} is ` + response.routes[0].legs[0].distance.text;
+                                        let directionsRenderer = new google.maps.DirectionsRenderer({
+                                            polylineOptions: {
+                                                strokeColor: "#11F937" //green
+                                            }
+                                        });
+
+                                        directionsRenderer.setMap(map);
+                                        directionsRenderer.setRouteIndex(i);
+                                        directionsRenderer.setDirections(response);
+                                    }
+                                }
+
+
+                            } else {
+                                window.alert(status);
+                                window.location.replace("http://localhost:8000");
+                            }
+
+                        });
+
                 }
             }
         </script>
@@ -47,15 +97,26 @@
 
 
 <body>
+
     <!-- Including navigation bar -->
     <div id="nav-bar">
+
         <%- include ("./navbar") %>
+            <p class="lead mt-4"> <a href="/dashboard"><i class="fas fa-chevron-circle-left"></i>Dashboard</a></p>
     </div>
 
-    <!-- The div element for the map -->
+    <!-- The div element for the map and distance-->
+    <h4>
+        <div id="msg"></div>
+    </h4>
+
     <div id="below-nav">
         <div id="map"></div>
+
     </div>
+
+
+
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script async src='https://maps.googleapis.com/maps/api/js?key=<%=process.env.MAP_API_KEY%>&callback=initMap&libraries=places&v=weekly' type="text/javascript"></script>
