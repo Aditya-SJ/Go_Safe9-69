@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Customized Maps</title>
+    <%- include ("./files") %>
+        <link rel="stylesheet" href="/css/map.css">
+
+        <script>
+            function loadMap() {
+                const noida = {
+                    lat: 28.6297,
+                    lng: 77.3721
+                };
+
+                const source = "<%= src %>";
+                const destination = "<%= dest %>";
+                const index = '<%-index%>';
+
+                // //remain checkbox checked
+                // document.getElementById('safetyBox').checked=true;
+
+
+                if (source == "" || destination == "") {
+                    //Initializing map
+                    const map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 17,
+                        center: noida,
+                    });
+
+                    //Iniializing Marker
+                    const marker = new google.maps.Marker({
+                        position: noida,
+                        map: map,
+                        title: "GoSafe Community"
+                    });
+
+
+                    // console.log(process.env.MAP_API_KEY, "...................");
+                    // console.log(source, destination, index, "helllllllllll mapejs page \n")
+                }
+            }
+        </script>
+
+</head>
+
+
+<body>
+    <!-- Including navigation bar -->
+    <div id="nav-bar">
+        <%- include ("./navbar") %>
+    </div>
+
+    <!-- The div element for the map -->
+    <div id="below-nav">
+        <div id="map"></div>
+    </div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script async src='https://maps.googleapis.com/maps/api/js?key=<%=process.env.MAP_API_KEY%>&callback=initMap&libraries=places&v=weekly' type="text/javascript"></script>
+
+    <script>
+        function AutoComplete() {
+            console.log("You are here");
+            loadMap();
+
+            let fromSearchBar = document.getElementById('fromSearchBar');
+            let toSearchBar = document.getElementById('toSearchBar');
+
+            let autocomplete1 = new google.maps.places.Autocomplete(fromSearchBar);
+            let autocomplete2 = new google.maps.places.Autocomplete(toSearchBar);
+        }
+    </script>
+
+    <script>
+        function initMap() {
+            loadMap();
+            AutoComplete();
+            // axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=23.04087,72.56356000000001&radius=30&key'+API_KEY)
+            //         .then((response)=>
+            //             {
+            //                 // let places_types = [];
+            //                 // for(let r in response)
+            //                 //     {
+            //                 //         places_types.push(response.data.results[r].types);
+            //                 //     }
+            //                 // resolve(places_types);
+            //                 console.log(response);
+            //             })
+            //         .catch((error)=>
+            //             {
+            //                 console.log(error);
+            //             });
+        }
+    </script>
+
+    <script>
+        function searchRoute() {
+            let source = document.getElementById('fromSearchBar').value;
+            let destination = document.getElementById('toSearchBar').value;
+
+            console.log("You in search route");
+            window.location.replace("http://localhost:8000/search_route/?src=" + source + "&dest=" + destination);
+        }
+    </script>
+
+
+</body>
+
+</html>
