@@ -52,7 +52,7 @@
                             <li><a href="#welcome" class="active">Home</a></li>
                             <li><a href="#features">About</a></li>
                             <li><a href="#contact-us">Contact Us</a></li>
-                            <li><button type="submit" id="name-button" class="main-button">Details</button></li>
+                            <li><button type="submit" id="name-button" onclick="UserDetail()" class="main-button">Details</button></li>
                             <li><button type="submit" class="main-button" onclick="logOut()">Logout</button></li>
                         </ul>
 
@@ -223,6 +223,10 @@
     <script>
         document.getElementById('user-email').value = "<%= user.email %>";
         document.getElementById('name-button').innerHTML = "<%= user.name %>";
+
+        function UserDetail() {
+            window.location.replace('/logout');
+        }
     </script>
 
     <script>
