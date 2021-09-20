@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 require('./config/passport');
 require('dotenv').config();
 
-let url = process.env.uri;
+const url = process.env.uri;
 
 // console.log(url);
 //Mongo DB connect
