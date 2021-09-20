@@ -7,11 +7,13 @@ const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
 require('./config/passport');
-
 require('dotenv').config();
 
+let url = process.env.uri;
+
+// console.log(url);
 //Mongo DB connect
-mongoose.connect(process.env.uri || 'mongodb://127.0.0.1:27017/gosafe', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(url || 'mongodb://127.0.0.1:27017/gosafe', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Mongodb Connected"))
     .catch((err) => console.log(err));
 
