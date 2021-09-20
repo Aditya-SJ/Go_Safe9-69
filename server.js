@@ -13,7 +13,7 @@ const url = process.env.uri;
 
 // console.log(url);
 //Mongo DB connect
-mongoose.connect(url || 'mongodb://127.0.0.1:27017/gosafe', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://hrithikngm:nigam123@gosafesafety.vci2t.mongodb.net/gosafe?retryWrites=true&w=majority" || 'mongodb://127.0.0.1:27017/gosafe', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Mongodb Connected"))
     .catch((err) => console.log(err));
 
