@@ -75,7 +75,7 @@ router.get('/', (req, res) => {
             console.log(error);
         });
 
-    res.send("<h1>Alerts send to near by police station & your relatives<h1>");
+    res.send(`<h1>Alerts send to near by police station & your relatives<h1> <a href="http://127.0.0.1:5500/dashboard">Home</a>`);
 
 })
 

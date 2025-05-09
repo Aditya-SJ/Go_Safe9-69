@@ -147,7 +147,7 @@
                 <!-- ***** Contact Text Start ***** -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="contact-text">
-                        <p>Help Centre JIIT NOIDA,Uttar Pradesh Pin: 201301</p>
+                        <p>Help Centre UCER NOIDA,Uttar Pradesh Pin: 201310</p>
                     </div>
                 </div>
                 <!-- ***** Contact Text End ***** -->
@@ -209,7 +209,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="copyright">Copyright &copy; 2021 GoSafe Community</p>
+                    <p class="copyright">Copyright &copy; 2023 GoSafe Community</p>
                 </div>
             </div>
         </div>
@@ -217,7 +217,7 @@
 
     <script>
         function getSafestPath() {
-            window.location.replace("http://localhost:8000/search_route_initial");
+            window.location.replace("http://localhost:5500/search_route_initial");
         }
     </script>
 
@@ -238,7 +238,7 @@
                 navigator.geolocation.getCurrentPosition((position) => {
                     lat = position.coords.latitude;
                     lng = position.coords.longitude;
-                    window.location.replace("http://localhost:8000/danger?lat=" + lat + "&lng=" + lng + "&email=" + useremail);
+                    window.location.replace("http://localhost:5500/danger?lat=" + lat + "&lng=" + lng + "&email=" + useremail);
                 });
             }
 
